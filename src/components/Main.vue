@@ -1,10 +1,14 @@
 <template>
     <div class="my-products">
 
-        <div class="albums">
-        <AlbumCard v-for="(element, index) in newArray" :key="index" :card="element"/>
-
+        <div class="albums" v-if="newArray">
+            <AlbumCard v-for="(element, index) in newArray" :key="index" :card="element"/>
         </div>
+
+        <div v-else>
+            <Loading />
+        </div>
+
     </div>
 </template>
 
@@ -12,26 +16,29 @@
 import axios from "axios";
 
 import AlbumCard from "./AlbumCard.vue"
+import Loading from './Loading.vue'
+
 
 export default {
     name: "IndexMain",
     data: function(){
         return{
-            newArray: [],
+            newArray: null,
+            apiAlbums: "https://flynn.boolean.careers/exercises/api/array/musi",
         }
     },
     components:{
-        AlbumCard
+        AlbumCard,
+        Loading,
     },
     created: function(){
-        this.getApiInfo();
+        setTimeout(this.getApiInfo, 3000, this.apiAlbums)
     },
     methods: {
-        getApiInfo(){
-            axios.get(`https://flynn.boolean.careers/exercises/api/array/music`)
+        getApiInfo(newApi){
+            axios.get(newApi)
             .then((result) => {
                 this.newArray=result.data.response;
-            console.log(result.data.response);
             })
             .catch((error) => {
             console.error(error)
