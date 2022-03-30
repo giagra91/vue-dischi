@@ -24,7 +24,7 @@ export default {
     data: function(){
         return{
             newArray: null,
-            apiAlbums: "https://flynn.boolean.careers/exercises/api/array/musi",
+            apiAlbums: "https://flynn.boolean.careers/exercises/api/array/music",
         }
     },
     components:{
