@@ -1,5 +1,5 @@
 <template>
-    <div class="text-white">
+    <div class="text-white text-center">
         <h1>Loading...</h1>
         <div class="loading">
 

@@ -26,6 +26,10 @@ export default {
         background-color: $BrandColor;
         margin: .3rem .8rem;
 
+        h5{
+            font-size: .95rem;
+        }
+
         p{
             font-size: .8rem;
             color: grey;
