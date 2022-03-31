@@ -7,12 +7,16 @@
                 <p class="card-text m-0">{{ card.year }}</p>
             </div>
         </div>
+        
 </template>
 
 <script>
 export default {
     name: "AlbumCard",
-    props: {card : Object}
+    props: 
+    {
+        card : Object,
+    }
 
 }
 </script>

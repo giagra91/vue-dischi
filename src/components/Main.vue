@@ -1,8 +1,10 @@
 <template>
     <div class="my-products">
-
+        <!-- <div class="fs-1 text-white">
+            {{ genreToSearch }}
+        </div> -->
         <div class="albums" v-if="newArray">
-            <AlbumCard v-for="(element, index) in newArray" :key="index" :card="element"/>
+            <AlbumCard v-for="(element, index) in newSearch(genreToSearch)" :key="index" :card="element"/>
         </div>
 
         <div v-else>
@@ -21,6 +23,9 @@ import Loading from './Loading.vue'
 
 export default {
     name: "IndexMain",
+    props:{
+        "genreToSearch": String,
+    },
     data: function(){
         return{
             newArray: null,
@@ -43,6 +48,10 @@ export default {
             .catch((error) => {
             console.error(error)
             })
+        },
+        newSearch(wordToSearch){
+            return this.newArray.filter(
+                (element) => element.genre.toLowerCase().includes(wordToSearch.toLowerCase()))
         }
     }
 }
@@ -51,6 +60,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/style/partials/variables.scss";
     div.my-products{
+        min-height: 91vh;
         background-color: $BgColor;
         display: flex;
         justify-content: center;

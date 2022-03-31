@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @search="searchMusicGenre" />
 
     <main>
-      <Main />
+      <Main :genreToSearch="genreToSearch" />
     </main>
 
   </div>
@@ -16,10 +16,20 @@ import Main from './components/Main.vue'
 
 export default {
   name: 'App',
+  data: function(){
+    return{
+      genreToSearch:"",
+    }
+  },
   components: {
     Header,
     Main
   },
+  methods:{
+    searchMusicGenre(newWord){
+      this.genreToSearch=newWord
+    }
+  }
 }
 </script>
 
