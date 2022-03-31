@@ -4,7 +4,7 @@
             {{ genreToSearch }}
         </div> -->
         <div class="albums" v-if="newArray">
-            <AlbumCard v-for="(element, index) in newSearch(genreToSearch)" :key="index" :card="element"/>
+            <AlbumCard v-for="(element, index) in newSearch" :key="index" :card="element"/>
         </div>
 
         <div v-else>
@@ -49,9 +49,15 @@ export default {
             console.error(error)
             })
         },
-        newSearch(wordToSearch){
-            return this.newArray.filter(
-                (element) => element.genre.toLowerCase().includes(wordToSearch.toLowerCase()))
+        // newSearch(wordToSearch){
+        //     return this.newArray.filter(
+        //         (element) => element.genre.toLowerCase().includes(wordToSearch.toLowerCase()))
+        // }
+    },
+    computed: {
+        newSearch(){
+        return this.newArray.filter(
+        (element) => element.genre.toLowerCase().includes(this.genreToSearch.toLowerCase()))
         }
     }
 }

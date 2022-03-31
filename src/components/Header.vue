@@ -49,7 +49,7 @@ div.my-header{
     }
 
     select{
-        width: 150px;
+        width: 200px;
     }
 }
 
