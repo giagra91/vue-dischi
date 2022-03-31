@@ -1,8 +1,6 @@
 <template>
     <div class="my-products">
-        <!-- <div class="fs-1 text-white">
-            {{ genreToSearch }}
-        </div> -->
+
         <div class="albums" v-if="newArray">
             <AlbumCard v-for="(element, index) in newSearch" :key="index" :card="element"/>
         </div>
@@ -25,6 +23,7 @@ export default {
     name: "IndexMain",
     props:{
         "genreToSearch": String,
+        "nameToSearch": String,
     },
     data: function(){
         return{
@@ -49,15 +48,16 @@ export default {
             console.error(error)
             })
         },
-        // newSearch(wordToSearch){
-        //     return this.newArray.filter(
-        //         (element) => element.genre.toLowerCase().includes(wordToSearch.toLowerCase()))
-        // }
     },
     computed: {
         newSearch(){
-        return this.newArray.filter(
-        (element) => element.genre.toLowerCase().includes(this.genreToSearch.toLowerCase()))
+            return this.newArray.filter(
+            (element) => {
+                if(element.genre.toLowerCase().includes(this.genreToSearch.toLowerCase()) && element.author.toLowerCase().includes(this.nameToSearch.toLowerCase())) {
+                    return true
+                } 
+            })
+            
         }
     }
 }

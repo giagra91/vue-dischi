@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Header @search="searchMusicGenre" />
+    <Header @search="searchMusicGenre" @searchAuthor="searchNameAuthor"/>
 
     <main>
-      <Main :genreToSearch="genreToSearch" />
+      <Main :genreToSearch="genreToSearch" :nameToSearch="nameToSearch"/>
     </main>
 
   </div>
@@ -19,6 +19,7 @@ export default {
   data: function(){
     return{
       genreToSearch:"",
+      nameToSearch:"",
     }
   },
   components: {
@@ -28,6 +29,9 @@ export default {
   methods:{
     searchMusicGenre(newWord){
       this.genreToSearch=newWord
+    },
+    searchNameAuthor(newName){
+      this.nameToSearch=newName
     }
   }
 }
