@@ -29,6 +29,7 @@ export default {
         return{
             newArray: null,
             apiAlbums: "https://flynn.boolean.careers/exercises/api/array/music",
+            albumsList: document.querySelector(`.albums`),
         }
     },
     components:{
@@ -59,6 +60,9 @@ export default {
             })
             
         }
+    },
+    updated(){
+        console.log(this.albumsList)
     }
 }
 </script>

@@ -32,6 +32,11 @@ export default {
 
         h5{
             font-size: .95rem;
+            cursor: pointer;
+
+            &:hover{
+                text-decoration: underline;
+            }
         }
 
         p{
